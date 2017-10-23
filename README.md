@@ -13,9 +13,8 @@ npm i dawn -g
 dn dev
 ```
 
-## 部署
+## 构建
 
 ```sh
-npm i dawn -g
-dn publish
+dn build
 ```
