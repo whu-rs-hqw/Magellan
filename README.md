@@ -1,17 +1,21 @@
-# Magellan
+# lab-ms-magellan
 
-Magellan is a tiny and extendible map editor.
+Fork自[Magellan](https://github.com/GuoChen-WHU/Magellan)，用于机房管理系统中绘制机房、机位图。
 
-# Features
+在Magellan的基础上，添加了将要素和机房、机位数据关联的定制功能。
 
-* Draw and edit features interactively
-* Add custom features
-* Custom feature attributes
-* Export vector data as geojson file
+# 使用
 
-# Develop
+## 开发
 
 ```sh
 npm i dawn -g
 dn dev
+```
+
+## 部署
+
+```sh
+npm i dawn -g
+dn publish
 ```

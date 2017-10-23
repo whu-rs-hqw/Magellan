@@ -6,6 +6,8 @@ dev:
   - name: copy
     files:
       ./build/(0).ico: ./src/assets/favicon.ico
+  - name: faked
+    port: 6002
   - name: webpack
     watch: true
   - name: server

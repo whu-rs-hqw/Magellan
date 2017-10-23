@@ -4,11 +4,13 @@ import { inject, observer } from 'mobx-react';
 const { Item } = Form;
 import { formItemLayout, tailFormItemLayout } from '../../utils/layout';
 import AddPropertyDialog from '../../components/AddPropertyDialog';
+import LinkToEntityDialog from '../../components/LinkToEntityDialog';
 
 @inject('feature')
 @observer class FeatureTab extends Component {
   state = {
-    modalVisible: false
+    addModalVisible: false,
+    linkModalVisible: false
   }
 
   handleRemove = () => {
@@ -18,12 +20,12 @@ import AddPropertyDialog from '../../components/AddPropertyDialog';
     }
   }
 
-  handleOpenModal = () => {
-    this.setState({ modalVisible: true });
+  handleOpenModal = (type) => {
+    this.setState({ [`${type}ModalVisible`]: true });
   }
 
-  handleCloseModal = () => {
-    this.setState({ modalVisible: false });
+  handleCloseModal = (type) => {
+    this.setState({ [`${type}ModalVisible`]: false });
   }
 
   addProperty = ({ key, value }) => {
@@ -37,7 +39,7 @@ import AddPropertyDialog from '../../components/AddPropertyDialog';
   render() {
     const { getFieldDecorator } = this.props.form;
     const { feature } = this.props;
-    const { modalVisible } = this.state;
+    const { addModalVisible, linkModalVisible } = this.state;
 
     return <div>
       <Form>
@@ -83,8 +85,15 @@ import AddPropertyDialog from '../../components/AddPropertyDialog';
             style={{ display: feature.uid === -1 ? 'none' : 'inline-block' }}
             type="primary"
             icon="plus"
-            onClick={this.handleOpenModal}
+            onClick={this.handleOpenModal.bind(this, 'add')}
           >Add custom property</Button>
+        </Item>
+        <Item {...tailFormItemLayout}>
+          <Button
+            style={{ display: feature.uid === -1 ? 'none' : 'inline-block' }}
+            icon="link"
+            onClick={this.handleOpenModal.bind(this, 'link')}
+          >Link to lab/seat</Button>
         </Item>
         <Item {...tailFormItemLayout}>
           <Button 
@@ -96,8 +105,13 @@ import AddPropertyDialog from '../../components/AddPropertyDialog';
         </Item>
       </Form>
       <AddPropertyDialog 
-        visible={modalVisible}
-        handleCloseModal={this.handleCloseModal}
+        visible={addModalVisible}
+        handleCloseModal={this.handleCloseModal.bind(this, 'add')}
+        addProperty={this.addProperty}
+      />
+      <LinkToEntityDialog 
+        visible={linkModalVisible}
+        handleCloseModal={this.handleCloseModal.bind(this, 'link')}
         addProperty={this.addProperty}
       />
     </div>;

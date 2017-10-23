@@ -1,0 +1,350 @@
+[
+  {
+    "id": "$global",
+    "name": "全局数据",
+    "url": "全局数据",
+    "method": "GET",
+    "global": true,
+    "content": {
+      "message": "Hello Faked!",
+      "list": [
+        {
+          "name": "faked"
+        }
+      ]
+    },
+    "checked": true
+  },
+  {
+    "id": "c2ee82bdc7764b5e16f74bbb487c1e6e",
+    "name": "示例：静态数据",
+    "method": "GET",
+    "url": "/api/echo",
+    "content": {
+      "message": "Hello Faked!"
+    },
+    "checked": true
+  },
+  {
+    "id": "32baa1cbea4deee52ec97f73f13918fe",
+    "name": "示例：动态添加",
+    "method": "POST",
+    "url": "/api/items/{name}",
+    "content": "//!exec\n\n//通过 //!exec 声明为执行逻辑\n//通过 global 访问全局对象\n//通过 this.send 发送数据\n//通过 this.params 访问路由参数\n//通过 this.body 访问请求主体\n//通过 this.query 访问查询字符串\n\nlet item = this.body;\nitem.name = this.params.name;\nglobal.list.push(item);\nthis.send({ success: true }); ",
+    "checked": true
+  },
+  {
+    "id": "ed88f1011a47687be23bc4140b77a470",
+    "name": "示例：动态删除",
+    "method": "DELETE",
+    "url": "/api/items/{name}",
+    "content": "//!exec\n\n//通过 //!exec 声明为执行逻辑\n//通过 global 访问全局对象\n//通过 this.send 发送数据\n//通过 this.params 访问路由参数\n//通过 this.body 访问请求主体\n//通过 this.query 访问查询字符串\n\nlet index = global.list.findIndex(item => item.name == this.params.name);\nglobal.list.splice(index, 1);\nthis.send({ success: true }); ",
+    "checked": true
+  },
+  {
+    "id": "ea0a8bb3f5e93d4936ef0fa026ef91de",
+    "name": "示例：动态查询",
+    "method": "GET",
+    "url": "/api/items/{name}",
+    "content": "//!exec\n\n//通过 //!exec 声明为执行逻辑\n//通过 global 访问全局对象\n//通过 this.send 发送数据\n//通过 this.params 访问路由参数\n//通过 this.body 访问请求主体\n//通过 this.query 访问查询字符串\n\nlet item = global.list.find(item => item.name == this.params.name);\nthis.send({ success: true, item: item }); ",
+    "checked": true
+  },
+  {
+    "id": "1943b14549f5590f0bd52682a120aad0",
+    "name": "/api/seat",
+    "method": "GET",
+    "url": "/api/seat",
+    "content": {
+      "list": [
+        {
+          "labId": "59e71d8f2b734e24a01d5654",
+          "lab": "316",
+          "id": "59e71d8f2b734e24a01d5662",
+          "name": "316-0",
+          "state": "occupied",
+          "student": "郭琛",
+          "supervisor": "胡庆武",
+          "history": [
+            {
+              "from": 1508418985282,
+              "state": "occupied"
+            }
+          ]
+        },
+        {
+          "labId": "59e71d8f2b734e24a01d5654",
+          "lab": "316",
+          "id": "59e71d8f2b734e24a01d5663",
+          "name": "316-1",
+          "state": "occupied",
+          "student": "郭琛",
+          "supervisor": "胡庆武",
+          "history": [
+            {
+              "from": 1508490630040,
+              "state": "occupied",
+              "student": "郭琛",
+              "supervisor": "胡庆武"
+            }
+          ]
+        },
+        {
+          "labId": "59e71d8f2b734e24a01d5654",
+          "lab": "316",
+          "id": "59e71d8f2b734e24a01d5664",
+          "name": "316-2",
+          "state": "occupied",
+          "student": "郭琛",
+          "supervisor": "胡庆武",
+          "history": [
+            {
+              "from": 1508746930542,
+              "state": "occupied",
+              "student": "郭琛",
+              "supervisor": "胡庆武"
+            }
+          ]
+        },
+        {
+          "labId": "59e71d8f2b734e24a01d5654",
+          "lab": "316",
+          "id": "59e71d8f2b734e24a01d5665",
+          "name": "316-3",
+          "state": "free",
+          "history": []
+        },
+        {
+          "labId": "59e71d8f2b734e24a01d5654",
+          "lab": "316",
+          "id": "59e71d8f2b734e24a01d5666",
+          "name": "316-4",
+          "state": "occupied",
+          "student": "郭琛",
+          "supervisor": "胡庆武",
+          "history": [
+            {
+              "from": 1508746936684,
+              "state": "occupied",
+              "student": "郭琛",
+              "supervisor": "胡庆武"
+            }
+          ]
+        },
+        {
+          "labId": "59e71d8f2b734e24a01d5654",
+          "lab": "316",
+          "id": "59e71d8f2b734e24a01d5667",
+          "name": "316-5",
+          "state": "occupied",
+          "student": "郭琛",
+          "supervisor": "胡庆武",
+          "history": [
+            {
+              "from": 1508490691557,
+              "state": "occupied",
+              "student": "郭琛",
+              "supervisor": "胡庆武"
+            }
+          ]
+        },
+        {
+          "labId": "59e71d8f2b734e24a01d5654",
+          "lab": "316",
+          "id": "59e71d8f2b734e24a01d5668",
+          "name": "316-6",
+          "state": "free",
+          "history": []
+        },
+        {
+          "labId": "59e71d8f2b734e24a01d5654",
+          "lab": "316",
+          "id": "59e71d8f2b734e24a01d5669",
+          "name": "316-7",
+          "state": "occupied",
+          "student": "郭琛",
+          "supervisor": "艾明耀",
+          "history": [
+            {
+              "from": 1508747514134,
+              "state": "occupied",
+              "student": "郭琛",
+              "supervisor": "胡庆武"
+            },
+            {
+              "from": 1508747517559,
+              "state": "occupied",
+              "student": "郭琛",
+              "supervisor": "胡庆武"
+            },
+            {
+              "from": 1508747524234,
+              "state": "occupied",
+              "student": "郭琛",
+              "supervisor": "艾明耀"
+            }
+          ]
+        },
+        {
+          "labId": "59e71d8f2b734e24a01d5654",
+          "lab": "316",
+          "id": "59e71d8f2b734e24a01d566a",
+          "name": "316-8",
+          "state": "free",
+          "history": []
+        },
+        {
+          "labId": "59e71d8f2b734e24a01d5654",
+          "lab": "316",
+          "id": "59e71d8f2b734e24a01d566b",
+          "name": "316-9",
+          "state": "free",
+          "history": []
+        },
+        {
+          "labId": "59e71d8f2b734e24a01d5654",
+          "lab": "316",
+          "id": "59e71d8f2b734e24a01d566c",
+          "name": "316-10",
+          "state": "occupied",
+          "student": "郭琛",
+          "supervisor": "付建红",
+          "history": [
+            {
+              "from": 1508747636749,
+              "state": "occupied",
+              "student": "郭琛",
+              "supervisor": "付建红"
+            }
+          ]
+        },
+        {
+          "labId": "59e71d8f2b734e24a01d5654",
+          "lab": "316",
+          "id": "59e71d8f2b734e24a01d566d",
+          "name": "316-11",
+          "state": "free",
+          "history": []
+        },
+        {
+          "labId": "59e71d8f2b734e24a01d5654",
+          "lab": "316",
+          "id": "59e71d8f2b734e24a01d566e",
+          "name": "316-12",
+          "state": "free",
+          "history": []
+        },
+        {
+          "labId": "59e71d8f2b734e24a01d5654",
+          "lab": "316",
+          "id": "59e71d8f2b734e24a01d566f",
+          "name": "316-13",
+          "state": "occupied",
+          "student": "郭琛",
+          "supervisor": "付建红",
+          "history": [
+            {
+              "from": 1508747700823,
+              "state": "occupied",
+              "student": "郭琛",
+              "supervisor": "付建红"
+            },
+            {
+              "from": 1508747704707,
+              "state": "occupied",
+              "student": "郭琛",
+              "supervisor": "付建红"
+            },
+            {
+              "from": 1508747720962,
+              "state": "occupied",
+              "student": "郭琛",
+              "supervisor": "付建红"
+            }
+          ]
+        },
+        {
+          "labId": "59e71d8f2b734e24a01d5654",
+          "lab": "316",
+          "id": "59e71d8f2b734e24a01d5670",
+          "name": "316-14",
+          "state": "free",
+          "history": []
+        },
+        {
+          "labId": "59e71d8f2b734e24a01d5654",
+          "lab": "316",
+          "id": "59e71d8f2b734e24a01d5671",
+          "name": "316-15",
+          "state": "occupied",
+          "student": "郭琛",
+          "supervisor": "艾明耀",
+          "history": [
+            {
+              "from": 1508747844576,
+              "state": "occupied",
+              "student": "郭琛",
+              "supervisor": "艾明耀"
+            }
+          ]
+        },
+        {
+          "labId": "59e71d8f2b734e24a01d5654",
+          "lab": "316",
+          "id": "59e71d8f2b734e24a01d5672",
+          "name": "316-16",
+          "state": "free",
+          "history": []
+        },
+        {
+          "labId": "59e71d8f2b734e24a01d5654",
+          "lab": "316",
+          "id": "59e71d8f2b734e24a01d5673",
+          "name": "316-17",
+          "state": "free",
+          "history": []
+        },
+        {
+          "labId": "59e71d8f2b734e24a01d5654",
+          "lab": "316",
+          "id": "59e71d8f2b734e24a01d5674",
+          "name": "316-18",
+          "state": "free",
+          "history": []
+        },
+        {
+          "labId": "59e71d8f2b734e24a01d5654",
+          "lab": "316",
+          "id": "59e71d8f2b734e24a01d5675",
+          "name": "316-19",
+          "state": "free",
+          "history": []
+        }
+      ],
+      "total": 20,
+      "currentPage": 1,
+      "pageSize": 1000
+    },
+    "checked": true
+  },
+  {
+    "id": "9c19292f5309ecf30a177b1c0372ec43",
+    "name": "/api/lab",
+    "method": "GET",
+    "url": "/api/lab",
+    "content": {
+      "list": [
+        {
+          "name": "316",
+          "id": "59e71d8f2b734e24a01d5654",
+          "building": "rs",
+          "floor": 3,
+          "seatNum": 20
+        }
+      ],
+      "total": 1,
+      "currentPage": 1,
+      "pageSize": 1000
+    },
+    "checked": true
+  }
+]

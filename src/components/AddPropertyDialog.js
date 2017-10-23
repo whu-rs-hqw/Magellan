@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import { Form, Input, Modal } from 'antd';
-import { inject } from 'mobx-react';
 const { Item } = Form;
 import { formItemLayout } from '../utils/layout';
 
-@inject('feature')
 class Dialog extends Component {
   handleAddProperty = e => {
     const { form, handleCloseModal, addProperty } = this.props;
